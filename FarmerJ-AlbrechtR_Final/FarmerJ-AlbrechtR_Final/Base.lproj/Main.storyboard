@@ -11,7 +11,7 @@
         <!--Add Task-->
         <scene sceneID="qPu-uJ-orv">
             <objects>
-                <viewController id="pLS-gz-dxD" sceneMemberID="viewController">
+                <viewController id="pLS-gz-dxD" customClass="AddTaskViewController" customModule="FarmerJ_AlbrechtR_Final" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6vI-E7-ZVm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,36 +25,44 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lQ6-A5-TMC">
-                                        <rect key="frame" x="0.0" y="44" width="364" height="113"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lQ6-A5-TMC">
+                                        <rect key="frame" x="0.0" y="44" width="364" height="56"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ouN-4s-DeP">
-                                        <rect key="frame" x="0.0" y="172" width="364" height="29"/>
+                                        <rect key="frame" x="0.0" y="115" width="364" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="nf0-9k-1Jx">
-                                        <rect key="frame" x="0.0" y="216" width="364" height="216"/>
+                                        <rect key="frame" x="0.0" y="159" width="364" height="216"/>
                                         <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
                                             <!--2037-12-31 11:00:00 +0000-->
                                         </date>
+                                        <connections>
+                                            <action selector="DateChooser:" destination="7Ex-35-ln7" eventType="valueChanged" id="vUz-wv-R6g"/>
+                                        </connections>
                                     </datePicker>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXh-Si-8Sf">
-                                        <rect key="frame" x="0.0" y="447" width="364" height="29"/>
+                                        <rect key="frame" x="0.0" y="390" width="364" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OeG-Lk-Cch">
-                                        <rect key="frame" x="0.0" y="491" width="364" height="128"/>
+                                        <rect key="frame" x="0.0" y="434" width="364" height="128"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOH-3f-v1w">
+                                        <rect key="frame" x="0.0" y="577" width="364" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Save"/>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -68,8 +76,15 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Add Task" image="plus" catalog="system" id="3C5-0B-t15"/>
+                    <connections>
+                        <outlet property="ChosenDate" destination="nf0-9k-1Jx" id="LXV-m7-fK5"/>
+                        <outlet property="NotesText" destination="OeG-Lk-Cch" id="qxc-0c-3He"/>
+                        <outlet property="SaveButton" destination="rOH-3f-v1w" id="LQu-lu-a99"/>
+                        <outlet property="TitleText" destination="lQ6-A5-TMC" id="7uk-BH-bPI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qmt-Is-1ek" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="7Ex-35-ln7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-388.40579710144931" y="326.78571428571428"/>
         </scene>
