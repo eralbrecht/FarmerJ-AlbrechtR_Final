@@ -18,6 +18,15 @@ class AddTaskViewController: UIViewController {
     
     var activeTextView: UITextView? = nil
     
+    @IBAction func clickSave(_ sender: Any) {
+
+        let thisTitle = TitleText.text
+        let thisDate = ChosenDate.date
+        let thisNotes = NotesText.text
+        let thisTask = Task(title: thisTitle, date: thisDate, notes: thisNotes)
+        StorageHandler.set(thisTask)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Do any additional setup after loading the view

@@ -10,6 +10,8 @@
 		5EBC9A272584129800D54015 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC9A262584129800D54015 /* TableViewController.swift */; };
 		5EBC9A2A2584139D00D54015 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC9A292584139D00D54015 /* AddTaskViewController.swift */; };
 		5EBC9A342587379200D54015 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC9A332587379200D54015 /* UIExtensions.swift */; };
+		AA87407D2587EF1C009D0D5A /* StorageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA87407C2587EF1C009D0D5A /* StorageHandler.swift */; };
+		AA8740802587F13B009D0D5A /* TaskObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA87407F2587F13B009D0D5A /* TaskObjects.swift */; };
 		AAB0F471258406B900534480 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB0F470258406B900534480 /* AppDelegate.swift */; };
 		AAB0F473258406B900534480 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB0F472258406B900534480 /* SceneDelegate.swift */; };
 		AAB0F478258406B900534480 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAB0F476258406B900534480 /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 		5EBC9A262584129800D54015 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		5EBC9A292584139D00D54015 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		5EBC9A332587379200D54015 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
+		AA87407C2587EF1C009D0D5A /* StorageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageHandler.swift; sourceTree = "<group>"; };
+		AA87407F2587F13B009D0D5A /* TaskObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskObjects.swift; sourceTree = "<group>"; };
 		AAB0F46D258406B900534480 /* FarmerJ-AlbrechtR_Final.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FarmerJ-AlbrechtR_Final.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAB0F470258406B900534480 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAB0F472258406B900534480 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +73,8 @@
 				5EBC9A262584129800D54015 /* TableViewController.swift */,
 				5EBC9A292584139D00D54015 /* AddTaskViewController.swift */,
 				5EBC9A332587379200D54015 /* UIExtensions.swift */,
+				AA87407C2587EF1C009D0D5A /* StorageHandler.swift */,
+				AA87407F2587F13B009D0D5A /* TaskObjects.swift */,
 			);
 			path = "FarmerJ-AlbrechtR_Final";
 			sourceTree = "<group>";
@@ -143,8 +149,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA8740802587F13B009D0D5A /* TaskObjects.swift in Sources */,
 				AAB0F471258406B900534480 /* AppDelegate.swift in Sources */,
 				AAB0F473258406B900534480 /* SceneDelegate.swift in Sources */,
+				AA87407D2587EF1C009D0D5A /* StorageHandler.swift in Sources */,
 				5EBC9A272584129800D54015 /* TableViewController.swift in Sources */,
 				5EBC9A342587379200D54015 /* UIExtensions.swift in Sources */,
 				5EBC9A2A2584139D00D54015 /* AddTaskViewController.swift in Sources */,
