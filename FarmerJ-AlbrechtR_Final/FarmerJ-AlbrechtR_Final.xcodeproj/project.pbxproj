@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5EBC9A272584129800D54015 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC9A262584129800D54015 /* TableViewController.swift */; };
 		5EBC9A2A2584139D00D54015 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC9A292584139D00D54015 /* AddTaskViewController.swift */; };
+		5EBC9A342587379200D54015 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC9A332587379200D54015 /* UIExtensions.swift */; };
 		AAB0F471258406B900534480 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB0F470258406B900534480 /* AppDelegate.swift */; };
 		AAB0F473258406B900534480 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB0F472258406B900534480 /* SceneDelegate.swift */; };
 		AAB0F478258406B900534480 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAB0F476258406B900534480 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		5EBC9A262584129800D54015 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		5EBC9A292584139D00D54015 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		5EBC9A332587379200D54015 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		AAB0F46D258406B900534480 /* FarmerJ-AlbrechtR_Final.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FarmerJ-AlbrechtR_Final.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAB0F470258406B900534480 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAB0F472258406B900534480 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				AAB0F47E258406BC00534480 /* Info.plist */,
 				5EBC9A262584129800D54015 /* TableViewController.swift */,
 				5EBC9A292584139D00D54015 /* AddTaskViewController.swift */,
+				5EBC9A332587379200D54015 /* UIExtensions.swift */,
 			);
 			path = "FarmerJ-AlbrechtR_Final";
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 				AAB0F471258406B900534480 /* AppDelegate.swift in Sources */,
 				AAB0F473258406B900534480 /* SceneDelegate.swift in Sources */,
 				5EBC9A272584129800D54015 /* TableViewController.swift in Sources */,
+				5EBC9A342587379200D54015 /* UIExtensions.swift in Sources */,
 				5EBC9A2A2584139D00D54015 /* AddTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
