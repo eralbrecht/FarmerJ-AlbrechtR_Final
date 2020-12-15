@@ -66,16 +66,26 @@ extension TableViewController: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath)
         
         cell.textLabel!.text = cellTaskArray.title
-        
+
         let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yy"
+        let dateString = dateFormatter.string(from: cellTaskArray.date)
+
+        cell.detailTextLabel!.text = dateString
+        
+        
+        /*let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US")
+        let theDate = dateFormatter.string(from: cellTaskArray.date)
         
+        cell.detailTextLabel!.text = theDate*/
     
-        
-        cell.detailTextLabel!.text = dateFormatter.string(from: cellTaskArray.date)
+        //cell.detailTextLabel!.text = dateFormatter.string(from: cellTaskArray.date)
         
         return cell
     }
+    
+    
 }
 
 
