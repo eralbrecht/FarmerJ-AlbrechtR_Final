@@ -20,11 +20,14 @@ class AddTaskViewController: UIViewController {
     
     @IBAction func clickSave(_ sender: Any) {
 
-        let thisTitle = TitleText.text
+        let thisTitle = TitleText.text ?? ""
         let thisDate = ChosenDate.date
-        let thisNotes = NotesText.text
+        let thisNotes = NotesText.text ?? ""
         let thisTask = Task(title: thisTitle, date: thisDate, notes: thisNotes)
-        StorageHandler.set(thisTask)
+        StorageHandler.set(value: thisTask)
+        for (key, value) in UserDefaults.standard.dictionaryRepresentation(){
+            print("\(key) = \(value) \n")
+        }
     }
     
     override func viewDidLoad() {

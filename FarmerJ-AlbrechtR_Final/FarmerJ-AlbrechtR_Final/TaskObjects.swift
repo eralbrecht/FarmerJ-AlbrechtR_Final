@@ -14,9 +14,8 @@ struct TaskManager: Codable {
 }
 struct Task: Codable {
     var title: String = ""
-    var date: String = ""
+    var date: Date
     var notes: String = ""
-    
     /*func GetHex() -> String{//make hexcode
         return String(format: "%02lX%02lX%02lX%02lX",
                       self.red,
