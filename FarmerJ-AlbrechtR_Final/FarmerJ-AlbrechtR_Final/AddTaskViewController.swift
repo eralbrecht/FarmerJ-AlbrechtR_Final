@@ -28,12 +28,12 @@ class AddTaskViewController: UIViewController {
         for (key, value) in UserDefaults.standard.dictionaryRepresentation(){
             print("\(key) = \(value) \n")
         }
-
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //Do any additional setup after loading the view
+        
         //This gives the "Notes" text a border that looks like the "Title" text field
         self.NotesText.layer.borderColor = UIColor.lightGray.cgColor
         self.NotesText.layer.borderWidth = 0.5
