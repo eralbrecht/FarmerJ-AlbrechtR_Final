@@ -18,8 +18,9 @@ class TableViewController: UIViewController {
         
         MainViewController.delegate = self
         MainViewController.dataSource = self
-        
         StorageHandler.getStorage()
+
+
     }
     
 

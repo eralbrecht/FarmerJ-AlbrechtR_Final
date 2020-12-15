@@ -50,6 +50,7 @@ class AddTaskViewController: UIViewController {
         
         TitleText.delegate = self
         NotesText.delegate = self
+        StorageHandler.getStorage()
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
