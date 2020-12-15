@@ -13,9 +13,16 @@ class TableViewController: UIViewController {
     
     @IBOutlet var MainViewController: UITableView!
     
+   /* override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.loadView()
+    }*/
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+            
         MainViewController.delegate = self
         MainViewController.dataSource = self
         StorageHandler.getStorage()
@@ -60,37 +67,16 @@ extension TableViewController: UITableViewDataSource{
         
         cell.textLabel!.text = cellTaskArray.title
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
+        
+    
+        
+        cell.detailTextLabel!.text = dateFormatter.string(from: cellTaskArray.date)
+        
         return cell
     }
 }
-/*extension TableViewController {
-    
-    func numberOfRows(inSection section: Int) -> Int {
-        return StorageHandler.storageCount()
-    }
-    
-    /*func cellForRow(at indexPath: IndexPath) -> UITableViewCell? {
-        
-        //Get the corresponding task
-        let cellTasksArray = TaskManager.taskCollection
-        let cellTaskArray = cellTasksArray[indexPath.item]
-        let cellTask =
-
-        
-    }*/
-    
-    func tableView(_ tableView: UITableView,
-                 cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       // Reuse or create a cell.
-       let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath)
-
-       // For a standard cell, use the UITableViewCell properties.
-       cell.textLabel!.text = title
-       return cell
-    }
-
-}*/
-
 
 
 // from last class project
