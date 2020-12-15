@@ -9,33 +9,92 @@ import UIKit
 
 class TableViewController: UIViewController {
     
-    @IBOutlet weak var SortChoice: UISegmentedControl!
+    //private let reuseIdentifier = "TaskCell"
+    
     @IBOutlet var MainViewController: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        MainViewController.delegate = self
+        MainViewController.dataSource = self
+        
+        StorageHandler.getStorage()
     }
-    private let reuseIdentifier = "TaskCell"
+    
+
+    /*
     var containerView = UIView()
     var slideUpView = UITableView()
     let slideUpViewHeight: CGFloat = 200
+        */
+ 
+    //var currentlySelectedTask: IndexPath = []
     
-    var currentlySelectedTask: IndexPath = []
     
-    
-    let slideUpViewDataSource: [Int: (String)] = [
+    /*let slideUpViewDataSource: [Int: (String)] = [
         0: ("Delete Task"),
         1: ("Edit Task"),
         3: ("View Task Details")
     ]
+ */
 
 }
+
+extension TableViewController: UITableViewDelegate{
+    
+}
+
+extension TableViewController: UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return StorageHandler.storageCount()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cellTasksArray = TaskManager.taskCollection
+        let cellTaskArray = cellTasksArray[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath)
+        
+        cell.textLabel!.text = cellTaskArray.title
+        
+        return cell
+    }
+}
+/*extension TableViewController {
+    
+    func numberOfRows(inSection section: Int) -> Int {
+        return StorageHandler.storageCount()
+    }
+    
+    /*func cellForRow(at indexPath: IndexPath) -> UITableViewCell? {
+        
+        //Get the corresponding task
+        let cellTasksArray = TaskManager.taskCollection
+        let cellTaskArray = cellTasksArray[indexPath.item]
+        let cellTask =
+
+        
+    }*/
+    
+    func tableView(_ tableView: UITableView,
+                 cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       // Reuse or create a cell.
+       let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath)
+
+       // For a standard cell, use the UITableViewCell properties.
+       cell.textLabel!.text = title
+       return cell
+    }
+
+}*/
+
 
 
 // from last class project
 
-extension TableViewController: UITableViewDelegate, UITableViewDataSource {
+/*extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         slideUpViewDataSource.count
     }
@@ -176,4 +235,4 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
 
     return false
   }
-}*/
+}*/*/
