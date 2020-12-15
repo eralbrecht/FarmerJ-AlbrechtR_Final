@@ -68,6 +68,9 @@
                                         <rect key="frame" x="0.0" y="577" width="364" height="42"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="clickSave:" destination="pLS-gz-dxD" eventType="primaryActionTriggered" id="F7f-Lu-i0A"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
