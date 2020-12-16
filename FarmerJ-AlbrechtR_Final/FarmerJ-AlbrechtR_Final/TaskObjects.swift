@@ -15,21 +15,6 @@ struct TaskManager: Codable {
 struct Task: Codable {
     var title: String = ""
     var date: Date
-    var notes: String = ""
-    /*func GetHex() -> String{//make hexcode
-        return String(format: "%02lX%02lX%02lX%02lX",
-                      self.red,
-                      self.green,
-                      self.blue,
-                      self.alpha
-        )
-    }*/
-    //make image of a size and shape and fill it with a task
-    /*func GetTask() -> UIImage {
-        
-        //this needs to return the task not an image
-       
-    }*/
-    
+    var notes: String = ""    
 }
 
