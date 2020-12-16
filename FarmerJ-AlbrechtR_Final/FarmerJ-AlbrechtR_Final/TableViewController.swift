@@ -9,11 +9,16 @@ import UIKit
 
 class TableViewController: UIViewController {
     
-    //private let reuseIdentifier = "TaskCell"
     
     @IBOutlet var MainViewController: UITableView!
+    @IBOutlet var theView: UIView!
     
-   /* override func viewWillAppear(_ animated: Bool) {
+    var containerView = UIView()
+    var slideUpView = UITableView()
+    var slideUpViewHeight: CGFloat = 200
+   
+    /*
+   override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.loadView()
@@ -22,20 +27,19 @@ class TableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            
-        MainViewController.delegate = self
-        MainViewController.dataSource = self
-        StorageHandler.getStorage()
+ 
+
 
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(TableViewController.longPress(longPressGestureRecognizer:)))
             self.view.addGestureRecognizer(longPressRecognizer)
+        
+        containerView.frame = theView.frame
+        
+        MainViewController.delegate = self
+        MainViewController.dataSource = self
+        StorageHandler.getStorage()
     }
-    
 
-    
-    var containerView = UIView()
-    var slideUpView = UITableView()
-    let slideUpViewHeight: CGFloat = 200
  
     //var currentlySelectedTask: IndexPath = []
     
@@ -60,8 +64,31 @@ extension TableViewController{
             let touchPoint = longPressGestureRecognizer.location(in: self.view)
             if let indexPath = MainViewController.indexPathForRow(at: touchPoint) {
                 print("Long Press Detected")
+                setupLongPressOverlay(tableIndex: indexPath.row)
+                
+                
             }
         }
+    }
+    
+    func setupLongPressOverlay(tableIndex: Int){
+        containerView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            self.containerView.alpha = 0.75
+        }, completion: nil)
+        
+        let tapGesture  = UITapGestureRecognizer(target: self, action: #selector(slideUpViewTapped))
+        containerView.addGestureRecognizer(tapGesture)
+        
+        MainViewController.addSubview(containerView)
+    }
+    
+    @objc func slideUpViewTapped() {
+        let screenSize = UIScreen.main.bounds.size
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            self.containerView.alpha = 0
+        }, completion: nil)
     }
 
 }

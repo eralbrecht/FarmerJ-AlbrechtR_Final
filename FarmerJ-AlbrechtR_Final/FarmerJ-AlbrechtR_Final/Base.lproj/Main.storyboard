@@ -154,6 +154,7 @@
                     <tabBarItem key="tabBarItem" title="Tasks" image="list.bullet.rectangle" catalog="system" id="ad3-L6-zud"/>
                     <connections>
                         <outlet property="MainViewController" destination="pAA-06-Zu2" id="eHa-vC-Mcn"/>
+                        <outlet property="theView" destination="car-ZM-x3p" id="GUn-Rx-oyB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I9d-lo-g1e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
