@@ -27,7 +27,8 @@ class TableViewController: UIViewController {
         MainViewController.dataSource = self
         StorageHandler.getStorage()
 
-
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(TableViewController.longPress(longPressGestureRecognizer:)))
+            self.view.addGestureRecognizer(longPressRecognizer)
     }
     
 
@@ -53,16 +54,16 @@ extension TableViewController: UITableViewDelegate{
 }
 
 extension TableViewController{
-    @objc func longPressGestureDetected(_ gestureRecognizer: UILongPressGestureRecognizer) {
-        if(gestureRecognizer.state == .began){
-            let point = gestureRecognizer.location(in: MainViewController)
-            if let indexPath = MainViewController.indexPathForRow(at: point) {
-                print(indexPath)
-            } else {
-                print("Could not find the path")
+    @objc func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+
+        if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
+            let touchPoint = longPressGestureRecognizer.location(in: self.view)
+            if let indexPath = MainViewController.indexPathForRow(at: touchPoint) {
+                print("Long Press Detected")
             }
         }
     }
+
 }
 
 
@@ -88,10 +89,7 @@ extension TableViewController: UITableViewDataSource{
 
         cell.detailTextLabel!.text = dateString
         
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGestureDetected))
-        longPressGesture.minimumPressDuration = 0.5
-        longPressGesture.delaysTouchesBegan = true
-        cell.addGestureRecognizer(longPressGesture)
+    
         
         return cell
     }
