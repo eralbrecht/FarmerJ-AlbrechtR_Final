@@ -16,6 +16,13 @@ class TableViewController: UIViewController {
     var containerView = UIView()
     var slideUpView = UITableView()
     var slideUpViewHeight: CGFloat = 200
+    
+    var currentlySelectedTask: IndexPath = []
+    
+    let slideUpViewDataSource: [Int: (String)] = [
+        0: ("Delete"),
+        1: ("Edit/View")
+    ]
    
     /*
    override func viewWillAppear(_ animated: Bool) {
@@ -34,27 +41,46 @@ class TableViewController: UIViewController {
             self.view.addGestureRecognizer(longPressRecognizer)
         
         containerView.frame = theView.frame
+        slideUpView.isScrollEnabled = true
+        slideUpView.delegate = self
+        slideUpView.dataSource = self
+        slideUpView.register(SlideUpViewCell.self, forCellReuseIdentifier: "SlideUpViewCell")
         
         MainViewController.delegate = self
         MainViewController.dataSource = self
         StorageHandler.getStorage()
     }
 
- 
-    //var currentlySelectedTask: IndexPath = []
-    
-    
-    /*let slideUpViewDataSource: [Int: (String)] = [
-        0: ("Delete Task"),
-        1: ("Edit Task"),
-        3: ("View Task Details")
-    ]
- */
 
 }
 
-extension TableViewController: UITableViewDelegate{
+
+extension TableViewController: UITableViewDataSource, UITableViewDelegate{
     
+    
+    
+    //How many rows do we need?
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return StorageHandler.storageCount()
+    }
+    
+    //Populating the table cells with title and date of the task
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cellTasksArray = TaskManager.taskCollection
+        let cellTaskArray = cellTasksArray[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath)
+        
+        cell.textLabel!.text = cellTaskArray.title
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yy"
+        let dateString = dateFormatter.string(from: cellTaskArray.date)
+
+        cell.detailTextLabel!.text = dateString
+        
+        return cell
+    }
 }
 
 extension TableViewController{
@@ -76,7 +102,6 @@ extension TableViewController{
         
         let screenSize = UIScreen.main.bounds.size
         slideUpView.frame = CGRect(x: 0, y: screenSize.height - (self.tabBarController?.tabBar.frame.size.height)!, width: screenSize.width, height: slideUpViewHeight)
-        slideUpView.separatorStyle = .singleLine
         
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
@@ -103,34 +128,3 @@ extension TableViewController{
 
 }
 
-
-extension TableViewController: UITableViewDataSource{
-    
-    //How many rows do we need?
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return StorageHandler.storageCount()
-    }
-    
-    //Populating the table cells with title and date of the task
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cellTasksArray = TaskManager.taskCollection
-        let cellTaskArray = cellTasksArray[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath)
-        
-        cell.textLabel!.text = cellTaskArray.title
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yy"
-        let dateString = dateFormatter.string(from: cellTaskArray.date)
-
-        cell.detailTextLabel!.text = dateString
-        
-    
-        
-        return cell
-    }
-    
-   
-    
-}
