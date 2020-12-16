@@ -52,12 +52,28 @@ extension TableViewController: UITableViewDelegate{
     
 }
 
+extension TableViewController{
+    @objc func longPressGestureDetected(_ gestureRecognizer: UILongPressGestureRecognizer) {
+        if(gestureRecognizer.state == .began){
+            let point = gestureRecognizer.location(in: MainViewController)
+            if let indexPath = MainViewController.indexPathForRow(at: point) {
+                print(indexPath)
+            } else {
+                print("Could not find the path")
+            }
+        }
+    }
+}
+
+
 extension TableViewController: UITableViewDataSource{
     
+    //How many rows do we need?
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return StorageHandler.storageCount()
     }
     
+    //Populating the table cells with title and date of the task
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellTasksArray = TaskManager.taskCollection
@@ -72,8 +88,14 @@ extension TableViewController: UITableViewDataSource{
 
         cell.detailTextLabel!.text = dateString
         
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGestureDetected))
+        longPressGesture.minimumPressDuration = 0.5
+        longPressGesture.delaysTouchesBegan = true
+        cell.addGestureRecognizer(longPressGesture)
+        
         return cell
     }
     
+   
     
 }
