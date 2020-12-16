@@ -18,20 +18,21 @@ struct StorageHandler {
             TaskManager.taskCollection = decodeCollection(encodedString.data(using: .utf8)!)
         }
     }
-    
+    //we want to check if theres a value for th egiven key
     static func isSet(key: String) -> Bool {
         return UserDefaults.standard.object(forKey: key) != nil
     }
-    
+    //we need to set a new task here
     static func set(value: Task) {
         TaskManager.taskCollection.append(value)
         
         defaultStorage.set(encodeCollection(), forKey: self.defaultKey)
     }
-
+    //we need to set something if we dont pass in an object
     static func set() {
         defaultStorage.set(encodeCollection(), forKey: self.defaultKey)
     }
+    //this will turn our task array into something that can be a string
     static func encodeCollection() -> String {
         // Our JSON Encoder
         let encoder = JSONEncoder()
@@ -53,7 +54,7 @@ struct StorageHandler {
         }
         return stringEncoded
     }
-    
+    //we decode our encoded string
     static func decodeCollection(_ encodedString: Data) -> [Task] {
         let decoder = JSONDecoder()
         guard let decoded = try? decoder.decode([Task].self, from: encodedString)
@@ -64,7 +65,7 @@ struct StorageHandler {
         
         return decoded
     }
-
+//returns how many elements are stored
     static func storageCount() -> Int {
         return TaskManager.taskCollection.count
     }
