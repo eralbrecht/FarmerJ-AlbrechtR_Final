@@ -74,21 +74,31 @@ extension TableViewController{
     func setupLongPressOverlay(tableIndex: Int){
         containerView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
         
+        let screenSize = UIScreen.main.bounds.size
+        slideUpView.frame = CGRect(x: 0, y: screenSize.height - (self.tabBarController?.tabBar.frame.size.height)!, width: screenSize.width, height: slideUpViewHeight)
+        slideUpView.separatorStyle = .singleLine
+        
+        
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
             self.containerView.alpha = 0.75
+            self.slideUpView.frame = CGRect(x: 0, y: screenSize.height - self.slideUpViewHeight - (self.tabBarController?.tabBar.frame.size.height)!, width: screenSize.width, height:self.slideUpViewHeight)
         }, completion: nil)
         
         let tapGesture  = UITapGestureRecognizer(target: self, action: #selector(slideUpViewTapped))
         containerView.addGestureRecognizer(tapGesture)
         
+
         MainViewController.addSubview(containerView)
+        MainViewController.addSubview(slideUpView)
     }
     
     @objc func slideUpViewTapped() {
         let screenSize = UIScreen.main.bounds.size
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
             self.containerView.alpha = 0
+            self.slideUpView.frame = CGRect(x: 0, y: screenSize.height -  (self.tabBarController?.tabBar.frame.size.height)!, width: screenSize.width, height:self.slideUpViewHeight)
         }, completion: nil)
+
     }
 
 }
